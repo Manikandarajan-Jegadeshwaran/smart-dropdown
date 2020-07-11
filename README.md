@@ -1,4 +1,4 @@
-This project was deployed with github page [Smart-dropdown](http://Manikandarajan-Jegadeshwaran.github.io/smart-dropdown).
+# [Smart-dropdown](https://manikandarajan-jegadeshwaran.github.io/AutoTiles-UI-Control/)
 
 ## Available Scripts
 
