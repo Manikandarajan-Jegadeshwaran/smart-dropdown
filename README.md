@@ -1,5 +1,5 @@
-# [Smart-dropdown](https://manikandarajan-jegadeshwaran.github.io/AutoTiles-UI-Control/)
-This project was deployed with github page. [Demo](https://manikandarajan-jegadeshwaran.github.io/AutoTiles-UI-Control/)
+# [Smart-dropdown](http://Manikandarajan-Jegadeshwaran.github.io/smart-dropdown)
+This project was deployed with github page. [Demo](http://Manikandarajan-Jegadeshwaran.github.io/smart-dropdown)
 
 
 ## Scan and view demo
