@@ -1,7 +1,24 @@
 # [Smart-dropdown](https://manikandarajan-jegadeshwaran.github.io/AutoTiles-UI-Control/)
+This project was deployed with github page. [Demo](https://manikandarajan-jegadeshwaran.github.io/AutoTiles-UI-Control/)
 
-## Scan to view changes
+
+## Scan and view demo
 ![Smart-dropdown](https://github.com/Manikandarajan-Jegadeshwaran/smart-dropdown/blob/master/src/assets/image/url.png)
+
+## Sample
+![Smart-dropdown](https://github.com/Manikandarajan-Jegadeshwaran/smart-dropdown/blob/master/src/assets/image/smart-dropdown-sample.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 In the project directory, you can run:
 
