@@ -6,18 +6,18 @@ This project was deployed with github page. [Demo](http://Manikandarajan-Jegades
 ![Smart-dropdown](https://github.com/Manikandarajan-Jegadeshwaran/smart-dropdown/blob/master/src/assets/image/url.png)
 
 ## Sample Code
-```html
+```javascript
     <SmartDropdown
-            {...{
-              source,
-              selectedItem,
-              onClearLocation,
-              onValueChange,
-              childCount,
-              allowUserToAdd,
-              onAddNew,
-            }}
-     />
+      {...{
+        source: [...response, { name: "some_name", code: "some_code" }],
+        selectedItem: { name: "some_name", code: "some_code" },
+        onClearLocation: () => handleClearLocation,
+        onValueChange: () => handleValueChange,
+        childCount: 5,
+        allowUserToAdd: true,
+        onAddNew: () => handleAddNew,
+      }}
+    />
 ```
 
 ## Api Reference
