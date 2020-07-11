@@ -1,6 +1,7 @@
 # [Smart-dropdown](https://manikandarajan-jegadeshwaran.github.io/AutoTiles-UI-Control/)
 
-## Available Scripts
+## Scan to view changes
+![Smart-dropdown](https://github.com/Manikandarajan-Jegadeshwaran/smart-dropdown/blob/master/src/assets/image/url.png)
 
 In the project directory, you can run:
 
