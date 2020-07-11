@@ -5,8 +5,19 @@ function Layout(props) {
   return (
     <Container maxWidth='lg'>
       <h1>Smart Drop Down</h1>
-
       {props.children}
+      <div
+        style={{
+          position: "absolute",
+          right: 0,
+          top: 0,
+        }}
+      >
+        <img
+          src={require("./assets/image/url.png")}
+          style={{ width: 100, height: 100 }}
+        />
+      </div>
     </Container>
   );
 }
