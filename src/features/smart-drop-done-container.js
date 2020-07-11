@@ -48,17 +48,8 @@ function SmartDropdownContainer(props) {
   }
 
   return (
-    <Grid container justify='space-around' alignItems='center' spacing={2}>
-      <Grid
-        item
-        container
-        //justify='space-around'
-        //alignItems='center'
-        spacing={2}
-        xs={12}
-        sm={12}
-        md={4}
-      >
+    <Grid container spacing={2}>
+      <Grid item container spacing={2} xs={12} sm={12} md={4}>
         <Grid item xs={11} sm={12} md={12}>
           <FormControlLabel
             control={
@@ -138,18 +129,23 @@ function SmartDropdownContainer(props) {
           />
         </Grid>
       </Grid>
-      <Grid item xs={11} sm={11} md={8}>
-        <SmartDropdown
-          {...{
-            source,
-            selectedItem,
-            onClearLocation,
-            onValueChange,
-            childCount,
-            allowUserToAdd,
-            onAddNew,
-          }}
-        />
+      <Grid item xs={11} sm={11} md={6}>
+        <div style={{ marginBottom: 15 }}>
+          <SmartDropdown
+            {...{
+              source,
+              selectedItem,
+              onClearLocation,
+              onValueChange,
+              childCount,
+              allowUserToAdd,
+              onAddNew,
+            }}
+          />
+        </div>
+        <span>{`Selected country : ${
+          !selectedItem ? "-" : selectedItem.name
+        }`}</span>
       </Grid>
       <Grid item xs={11} sm={12} md={12}>
         <p>
@@ -172,6 +168,37 @@ function SmartDropdownContainer(props) {
           AC 3 - If user click on "X more...", then the complete list of
           countries would be displayed.
         </h4>
+        <h2>Sample</h2>
+        <div
+          style={{
+            borderLeft: "10px solid #ffe564",
+            backgroundColor: "#ffe5644d",
+          }}
+        >
+          <img src={require("../assets/image/smart-dropdown-sample.png")} />
+        </div>
+        <h2>API Reference</h2>
+        <p>
+          <h4>source [Array]</h4>Should be the list of items used as dropdown options.
+        </p>
+        <p>
+          <h4>selectedItem [Object]</h4>Selected item should be passed through this attribute. Empty object can pass as default value.
+        </p>
+        <p>
+          <h4>childCount [Number]</h4>Indicates number of items to be shown as options.
+        </p>
+        <p>
+          <h4>onClearLocation [Function]</h4>Callback triggered when user clear the value.
+        </p>
+        <p>
+          <h4>onValueChange [Function]</h4>Callback triggered when user select an item.
+        </p>
+        <p>
+          <h4>onAddNew [Function]</h4>Callback triggered when user try to add a new item.
+        </p>
+        <p>
+          <h4>allowUserToAdd [Boolean]</h4>Enable/Disable add new functionality
+        </p>
       </Grid>
     </Grid>
   );
