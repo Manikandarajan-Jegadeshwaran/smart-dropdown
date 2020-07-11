@@ -1,11 +1,14 @@
 import React, { useState, useEffect, Children } from "react";
 import Grid from "@material-ui/core/Grid";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+import {
+  Requirement,
+  Sample,
+  ApiReference,
+  ConnectApi,
+  ShowAddNew,
+  DisplayChildren,
+} from "./helper-component";
 import { SmartDropdown } from "../component";
-import { Countries } from "../sample-data";
 import { getCountries } from "../api";
 
 function SmartDropdownContainer(props) {
@@ -51,81 +54,14 @@ function SmartDropdownContainer(props) {
     <Grid container spacing={2}>
       <Grid item container spacing={2} xs={12} sm={12} md={4}>
         <Grid item xs={11} sm={12} md={12}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={allowApi}
-                onChange={() => setAllowApi(!allowApi)}
-                name='allowApi'
-              />
-            }
-            labelPlacement='start'
-            label={
-              <span
-                style={{
-                  textDecoration: allowApi ? "none" : "line-through",
-                }}
-              >
-                {"Connect API"}
-              </span>
-            }
-          />
+          <ConnectApi {...{ allowApi, setAllowApi }} />
         </Grid>
         <Grid item xs={11} sm={12} md={12}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={allowUserToAdd}
-                onChange={() => setAllowUserToAdd(!allowUserToAdd)}
-                name='allowUserToAdd'
-              />
-            }
-            labelPlacement='start'
-            label={
-              <span
-                style={{
-                  textDecoration: allowUserToAdd ? "none" : "line-through",
-                }}
-              >
-                Show "Add New"
-              </span>
-            }
-          />
+          <ShowAddNew {...{ allowUserToAdd, setAllowUserToAdd }} />
         </Grid>
         <Grid item xs={11} sm={12} md={12}>
-          <FormControlLabel
-            control={
-              <div style={{ paddingLeft: 10 }}>
-                <Button
-                  variant='contained'
-                  style={{ minWidth: 0 }}
-                  disabled={childCount <= 1}
-                  onClick={() => {
-                    if (childCount === 1) {
-                      return;
-                    }
-                    setChildCount(childCount - 1);
-                  }}
-                >
-                  -
-                </Button>
-                <span style={{ padding: 10 }}>{`${childCount} Items`}</span>
-                <Button
-                  variant='contained'
-                  style={{ minWidth: 0 }}
-                  onClick={() => {
-                    if (childCount === source?.length) {
-                      return;
-                    }
-                    setChildCount(childCount + 1);
-                  }}
-                >
-                  +
-                </Button>
-              </div>
-            }
-            labelPlacement='start'
-            label='Children '
+          <DisplayChildren
+            {...{ childCount, setChildCount, min: 1, max: source?.length }}
           />
         </Grid>
       </Grid>
@@ -148,60 +84,12 @@ function SmartDropdownContainer(props) {
         }`}</span>
       </Grid>
       <Grid item xs={11} sm={12} md={12}>
-        <p>
-          The parent is responsible for passing the Array of countries. The
-          child should iterate and display the list of countries received. The
-          max no. of items listed in the dropdown should be configureable from
-          the parent. Upon user selecting the country, the parent should log the
-          selected the country.
-        </p>
-
-        <h4>
-          AC 1 - If the user with Add privilege, then if the location user
-          searching is not part of the list, then possible to add
-        </h4>
-        <h4>
-          AC 2 - If user, dont have privilege to Add, dont display the "Add &
-          Select" button.
-        </h4>
-        <h4>
-          AC 3 - If user click on "X more...", then the complete list of
-          countries would be displayed.
-        </h4>
-        <h2>Sample</h2>
-        <div
-          style={{
-            borderLeft: "10px solid #ffe564",
-            backgroundColor: "#ffe5644d",
-          }}
-        >
-          <img src={require("../assets/image/smart-dropdown-sample.png")} />
-        </div>
-        <h2>API Reference</h2>
-        <p>
-          <h4>source [Array]</h4>Should be the list of items used as dropdown options.
-        </p>
-        <p>
-          <h4>selectedItem [Object]</h4>Selected item should be passed through this attribute. Empty object can pass as default value.
-        </p>
-        <p>
-          <h4>childCount [Number]</h4>Indicates number of items to be shown as options.
-        </p>
-        <p>
-          <h4>onClearLocation [Function]</h4>Callback triggered when user clear the value.
-        </p>
-        <p>
-          <h4>onValueChange [Function]</h4>Callback triggered when user select an item.
-        </p>
-        <p>
-          <h4>onAddNew [Function]</h4>Callback triggered when user try to add a new item.
-        </p>
-        <p>
-          <h4>allowUserToAdd [Boolean]</h4>Enable/Disable add new functionality
-        </p>
+        <Requirement />
+        <Sample />
+        <ApiReference />
       </Grid>
     </Grid>
   );
 }
 
-export default SmartDropdownContainer;
+export default React.memo(SmartDropdownContainer);

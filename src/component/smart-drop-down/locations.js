@@ -9,7 +9,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import PropTypes from "prop-types";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "98%",
@@ -35,4 +34,4 @@ function Locations(props) {
   );
 }
 
-export default Locations;
+export default React.memo(Locations);

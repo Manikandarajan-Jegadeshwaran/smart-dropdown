@@ -125,4 +125,4 @@ function SmartDropdown(props) {
   );
 }
 
-export default SmartDropdown;
+export default React.memo(SmartDropdown);

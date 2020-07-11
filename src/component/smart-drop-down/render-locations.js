@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -37,7 +37,6 @@ function RenderLocations(props) {
     searchValue,
     childCount,
     onItemChange,
-    onShowMoreSelected,
     allowUserToAdd,
     onAddNew,
   } = props;
@@ -72,7 +71,7 @@ function RenderLocations(props) {
     );
   }
 
-  function renderChildren() {
+  const renderChildren = useCallback(() => {
     if (!source) {
       return (
         <div
@@ -132,8 +131,9 @@ function RenderLocations(props) {
         </div>
       </>
     );
-  }
+  }, [source, searchValue, allowUserToAdd, maxNoOfChild, showMoreButton]);
+
   return <div className={classes.root}>{renderChildren()}</div>;
 }
 
-export default RenderLocations;
+export default React.memo(RenderLocations);

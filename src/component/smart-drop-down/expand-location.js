@@ -27,4 +27,4 @@ function ExpandLocation(props) {
   );
 }
 
-export default ExpandLocation;
+export default React.memo(ExpandLocation);

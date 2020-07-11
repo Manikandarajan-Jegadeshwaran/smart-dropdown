@@ -37,4 +37,4 @@ function SearchLocation(props) {
   );
 }
 
-export default SearchLocation;
+export default React.memo(SearchLocation);

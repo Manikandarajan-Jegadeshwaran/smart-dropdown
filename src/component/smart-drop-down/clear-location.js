@@ -26,4 +26,4 @@ function ClearLocation(props) {
   );
 }
 
-export default ClearLocation;
+export default React.memo(ClearLocation);
