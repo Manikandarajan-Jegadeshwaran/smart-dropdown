@@ -1,6 +1,7 @@
 import React from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 
 const DisplayChildren = ({ childCount, setChildCount, min, max }) => (
   <FormControlLabel
@@ -38,5 +39,12 @@ const DisplayChildren = ({ childCount, setChildCount, min, max }) => (
     label='Children '
   />
 );
+
+DisplayChildren.propTypes = {
+  childCount: PropTypes.number.isRequired,
+  setChildCount: PropTypes.func.isRequired,
+  min: PropTypes.number,
+  max: PropTypes.number,
+};
 
 export default React.memo(DisplayChildren);

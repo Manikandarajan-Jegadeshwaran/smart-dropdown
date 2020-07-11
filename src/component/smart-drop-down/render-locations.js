@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -135,5 +136,16 @@ function RenderLocations(props) {
 
   return <div className={classes.root}>{renderChildren()}</div>;
 }
+
+RenderLocations.propTypes = {
+  source: PropTypes.arrayOf(
+    PropTypes.shape({ name: PropTypes.string, code: PropTypes.string })
+  ).isRequired,
+  searchValue: PropTypes.string,
+  childCount: PropTypes.number.isRequired,
+  onItemChange: PropTypes.func.isRequired,
+  allowUserToAdd: PropTypes.bool.isRequired,
+  onAddNew: PropTypes.func.isRequired,
+};
 
 export default React.memo(RenderLocations);

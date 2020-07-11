@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -36,5 +37,10 @@ function SearchLocation(props) {
     </FormControl>
   );
 }
+
+SearchLocation.propTypes = {
+  searchValue: PropTypes.string.isRequired,
+  onSearchValueChange: PropTypes.func.isRequired,
+};
 
 export default React.memo(SearchLocation);

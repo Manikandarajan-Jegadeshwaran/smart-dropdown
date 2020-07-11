@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 
@@ -23,5 +24,10 @@ const ConnectApi = ({ allowApi, setAllowApi }) => (
     }
   />
 );
+
+ConnectApi.propTypes = {
+  allowApi: PropTypes.bool.isRequired,
+  setAllowApi: PropTypes.func.isRequired,
+};
 
 export default React.memo(ConnectApi);

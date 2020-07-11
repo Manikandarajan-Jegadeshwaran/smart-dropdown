@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
@@ -72,57 +73,65 @@ function SmartDropdown(props) {
     onAddNew(value);
   }
 
-  function handleClickAway() {
-    setOpen(false);
-    setAnchorEl(undefined);
-  }
-
   return (
-    <ClickAwayListener onClickAway={handleClickAway}>
-      <>
-        <Paper
-          className={classes.root}
-          onClick={(e) => {
-            setAnchorEl(e.currentTarget);
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span className={classes.input}>
-              {selectedItem?.name || "Select a location"}
-            </span>
+    <>
+      <Paper
+        className={classes.root}
+        onClick={(e) => {
+          setAnchorEl(e.currentTarget);
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <span className={classes.input}>
+            {selectedItem?.name || "Select a location"}
+          </span>
 
-            <ClearLocation {...{ onClearLocation }} />
-            <Divider className={classes.divider} orientation='vertical' />
-            <ExpandLocation {...{ open, onExpansion }} />
-          </div>
-        </Paper>
-        <>
-          {open && (
-            <Popper open={open} anchorEl={anchorEl} placement='bottom-start'>
-              <Paper
-                className={classes.popperContainer}
-                style={{
-                  width: anchorEl?.getBoundingClientRect().width,
+          <ClearLocation {...{ onClearLocation }} />
+          <Divider className={classes.divider} orientation='vertical' />
+          <ExpandLocation {...{ open, onExpansion }} />
+        </div>
+      </Paper>
+      <>
+        {open && (
+          <Popper open={open} anchorEl={anchorEl} placement='bottom-start'>
+            <Paper
+              className={classes.popperContainer}
+              style={{
+                width: anchorEl?.getBoundingClientRect().width,
+              }}
+            >
+              <SearchLocation {...{ searchValue, onSearchValueChange }} />
+              <RenderLocations
+                {...{
+                  source,
+                  searchValue,
+                  childCount,
+                  onItemChange,
+                  allowUserToAdd,
+                  onAddNew: handleOnAddNew,
                 }}
-              >
-                <SearchLocation {...{ searchValue, onSearchValueChange }} />
-                <RenderLocations
-                  {...{
-                    source,
-                    searchValue,
-                    childCount,
-                    onItemChange,
-                    allowUserToAdd,
-                    onAddNew: handleOnAddNew,
-                  }}
-                />
-              </Paper>
-            </Popper>
-          )}
-        </>
+              />
+            </Paper>
+          </Popper>
+        )}
       </>
-    </ClickAwayListener>
+    </>
   );
 }
+
+SmartDropdown.propTypes = {
+  source: PropTypes.arrayOf(
+    PropTypes.shape({ name: PropTypes.string, code: PropTypes.string })
+  ),
+  selectedItem: PropTypes.shape({
+    name: PropTypes.string,
+    code: PropTypes.string,
+  }),
+  onClearLocation: PropTypes.func.isRequired,
+  onValueChange: PropTypes.func.isRequired,
+  childCount: PropTypes.number.isRequired,
+  allowUserToAdd: PropTypes.bool.isRequired,
+  onAddNew: PropTypes.func.isRequired,
+};
 
 export default React.memo(SmartDropdown);
