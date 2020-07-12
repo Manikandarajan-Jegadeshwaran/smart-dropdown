@@ -7,9 +7,12 @@ const Sample = () => (
       style={{
         borderLeft: "8px solid #d1d4d6",
         backgroundColor: "#f6f8fa",
+        paddingTop: 5,
       }}
     >
-      <img src={require("../../assets/image/smart-dropdown-sample.png")} />
+      <img
+        src={require("../../assets/image/smart-dropdown-sample-props-only.png")}
+      />
     </div>
   </>
 );
