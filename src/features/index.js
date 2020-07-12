@@ -1,3 +1,3 @@
-import SmartDropdownContainer from "./smart-drop-done-container";
+import SmartDropdownContainer from "./smart-drop-down-container";
 
 export default SmartDropdownContainer;
