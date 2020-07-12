@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
-import InputBase from "@material-ui/core/InputBase";
 import Divider from "@material-ui/core/Divider";
-import Tooltip from "@material-ui/core/Tooltip";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import ClearLocation from "./clear-location";
 import ExpandLocation from "./expand-location";
 import SearchLocation from "./search-location";
@@ -53,25 +49,21 @@ function SmartDropdown(props) {
 
   const classes = useStyles({ open });
 
-  function onExpansion(e) {
-    setOpen(!open);
-  }
+  const onExpansion = () => setOpen(!open);
 
-  function onSearchValueChange(e) {
-    setSearchValue(e.target.value);
-  }
+  const onSearchValueChange = (e) => setSearchValue(e.target.value);
 
-  function onItemChange(item) {
+  const onItemChange = (item) => {
     setSearchValue("");
     setOpen(false);
     onValueChange(item);
-  }
+  };
 
-  function handleOnAddNew(value) {
+  const handleOnAddNew = (value) => {
     setOpen(false);
     setSearchValue("");
     onAddNew(value);
-  }
+  };
 
   return (
     <>

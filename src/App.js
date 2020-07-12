@@ -5,15 +5,15 @@ import "./App.css";
 
 const LazySmartDropdownContainer = lazy(() => import("./features"));
 
+const Loader = () => (
+  <div className='progress'>
+    <CircularProgress />
+  </div>
+);
+
 function App() {
   return (
-    <Suspense
-      fallback={
-        <div className='progress'>
-          <CircularProgress />
-        </div>
-      }
-    >
+    <Suspense fallback={<Loader />}>
       <Layout>
         <LazySmartDropdownContainer />
       </Layout>

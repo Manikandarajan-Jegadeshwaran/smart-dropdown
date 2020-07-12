@@ -16,36 +16,50 @@ const useStyles = makeStyles((theme) => ({
       color: "#000",
     },
   },
+  floatImgContainer: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    "& img": {
+      width: 100,
+      height: 100,
+    },
+  },
 }));
+
+const Header = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.header}>
+      <h2>Smart Drop Down</h2>
+      <a
+        title='Open smart-dropdown github repo'
+        href='https://github.com/Manikandarajan-Jegadeshwaran/smart-dropdown'
+      >
+        <GitHubIcon />
+      </a>
+    </div>
+  );
+};
+
+const FloatImageUrl = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.floatImgContainer}>
+      <img src={require("./assets/image/url.png")} />
+    </div>
+  );
+};
 
 function Layout(props) {
   const classes = useStyles();
   return (
     <Container maxWidth='lg'>
-      <div className={classes.header}>
-        <h2>Smart Drop Down</h2>
-        <a
-          title='Open smart-dropdown github repo'
-          href='https://github.com/Manikandarajan-Jegadeshwaran/smart-dropdown'
-        >
-          <GitHubIcon />
-        </a>
-      </div>
+      <Header />
       {props.children}
-      <div
-        style={{
-          position: "absolute",
-          right: 0,
-          top: 0,
-        }}
-      >
-        <img
-          src={require("./assets/image/url.png")}
-          style={{ width: 100, height: 100 }}
-        />
-      </div>
+      <FloatImageUrl />
     </Container>
   );
 }
 
-export default Layout;
+export default React.memo(Layout);

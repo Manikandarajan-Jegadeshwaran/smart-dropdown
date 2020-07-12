@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Children } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import {
   Requirement,
@@ -34,21 +34,17 @@ function SmartDropdownContainer(props) {
     }
   }, [allowApi]);
 
-  function onClearLocation() {
-    setSelectedItem(null);
-  }
+  const onClearLocation = () => setSelectedItem(null);
 
-  function onValueChange(item) {
-    setSelectedItem(item);
-  }
+  const onValueChange = (item) => setSelectedItem(item);
 
-  function onAddNew(value) {
+  const onAddNew = (value) => {
     if (value) {
       const newValue = { name: value, code: value };
       setSelectedItem(newValue);
       setSource([...source, newValue]);
     }
-  }
+  };
 
   return (
     <Grid container spacing={2}>
